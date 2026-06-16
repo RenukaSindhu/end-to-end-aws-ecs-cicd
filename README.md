@@ -5,8 +5,8 @@ The application is containerized using Docker, stored in Amazon ECR, and deploye
 
 ## Architecture
 
-[pic] Deployment Architecture \
-[pic] CI/CD Architecture
+![Deployment Architecture](architecture/deployment_architecture.png)
+![CI/CD Architecture](architecture/cicd_architecture.png)
 
 ### Manual Deployment Workflow
 GitHub Repository → EC2 Instance → Docker Build → Amazon ECR → ECS Cluster → Task Definition → ECS Service → Application Load Balancer → Users
@@ -49,7 +49,8 @@ GitHub → AWS CodePipeline → AWS CodeBuild → Amazon ECR → Amazon ECS Farg
 10.	Configured Application Load Balancer.
 11.	Enabled Auto Scaling.
 12.	Successfully deployed and accessed the application. \
-[pictures]
+
+### Manual Deployment Screenshots
 
 ## Phase 2: Automated CI/CD Pipeline
 ### CI/CD Workflow
@@ -59,7 +60,8 @@ GitHub → AWS CodePipeline → AWS CodeBuild → Amazon ECR → Amazon ECS Farg
 4.	Image is pushed to Amazon ECR.
 5.	ECS Service is updated automatically.
 6.	New tasks are deployed without manual intervention. \
-[pictures]
+
+### CI/CD Screenshots
 
 ## Key Learnings
 •	Docker containerization \
