@@ -54,9 +54,9 @@ GitHub → AWS CodePipeline → AWS CodeBuild → Amazon ECR → Amazon ECS Farg
 ### Amazon ECR Repository
 ![ecr-repository](screenshots/manual-deployment/ecr-repository.png)
 ### Amazon ECS Cluster
-![ecs-cluster](screenshots/manual-deployment/ecr-cluster.png)
+![ecs-cluster](screenshots/manual-deployment/ecs-cluster.png)
 ### Amazon ECS Service
-![ecs-service](screenshots/manual-deployment/ecr-service.png)
+![ecs-service](screenshots/manual-deployment/ecs-service.png)
 ### Running Application
 ![website-output](screenshots/manual-deployment/website-output.png)
 
