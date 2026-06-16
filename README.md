@@ -4,8 +4,9 @@ This project demonstrates both manual deployment and automated CI/CD deployment 
 The application is containerized using Docker, stored in Amazon ECR, and deployed to Amazon ECS Fargate. The deployment process is first performed manually to understand the complete workflow and then automated using AWS CodeBuild and AWS CodePipeline integrated with GitHub.
 
 ## Architecture
-
+### Deployment Architecture
 ![Deployment Architecture](architecture/deployment_architecture.png)
+### CI/CD Architecture
 ![CI/CD Architecture](architecture/cicd_architecture.png)
 
 ### Manual Deployment Workflow
@@ -48,9 +49,16 @@ GitHub → AWS CodePipeline → AWS CodeBuild → Amazon ECR → Amazon ECS Farg
 9.	Created ECS Service.
 10.	Configured Application Load Balancer.
 11.	Enabled Auto Scaling.
-12.	Successfully deployed and accessed the application. \
+12.	Successfully deployed and accessed the application.
 
-### Manual Deployment Screenshots
+### Amazon ECR Repository
+![ecr-repository](screenshots/manual-deployment/ecr-repository.png)
+### Amazon ECS Cluster
+![ecs-cluster](screenshots/manual-deployment/ecr-cluster.png)
+### Amazon ECS Service
+![ecs-service](screenshots/manual-deployment/ecr-service.png)
+### Running Application
+![website-output](screenshots/manual-deployment/website-output.png)
 
 ## Phase 2: Automated CI/CD Pipeline
 ### CI/CD Workflow
@@ -59,9 +67,14 @@ GitHub → AWS CodePipeline → AWS CodeBuild → Amazon ECR → Amazon ECS Farg
 3.	AWS CodeBuild builds Docker image automatically.
 4.	Image is pushed to Amazon ECR.
 5.	ECS Service is updated automatically.
-6.	New tasks are deployed without manual intervention. \
+6.	New tasks are deployed without manual intervention.
 
-### CI/CD Screenshots
+### AWS CodeBuild Success
+![codebuild-success](screenshots/cicd/codebuild-success.png)
+### AWS CodePipeline Success
+![codepipeline-success](screenshots/cicd/codepipeline-success.png)
+### Updated Application After Git Push
+![updated-website](screenshots/cicd/updated-website.png)
 
 ## Key Learnings
 •	Docker containerization \
