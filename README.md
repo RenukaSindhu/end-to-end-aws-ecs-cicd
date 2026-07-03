@@ -1,4 +1,5 @@
 # 🚀 End-to-End AWS ECS Fargate CI/CD Pipeline using Docker, CodePipeline & CodeBuild
+
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
 ![Docker](https://img.shields.io/badge/Docker-Container-blue?logo=docker)
 ![Amazon ECS](https://img.shields.io/badge/Amazon-ECS-orange?logo=amazonecs)
@@ -9,22 +10,22 @@
 ![WAF](https://img.shields.io/badge/AWS-WAF-green)
 
 ## 📌 Project Overview
+
 This project demonstrates an end-to-end production-style deployment of a containerized web application on AWS. \
 The application is first deployed manually using Docker, Amazon ECR and Amazon ECS Fargate to understand the complete deployment workflow. \
 The deployment process is then fully automated using AWS CodePipeline and AWS CodeBuild, enabling Continuous Integration and Continuous Deployment (CI/CD). \
 The infrastructure is secured using AWS WAF, HTTPS with AWS Certificate Manager, custom domain routing using Amazon Route 53, monitored using Amazon CloudWatch, configured with Amazon SNS notifications, and automatically scales using ECS Service Auto Scaling.
 
----
-
 ## 🏗 Architecture
+
 ### Complete Solution Architecture
 ![Complete Architecture](architecture/complete-architecture.png)
+
 ### CI/CD Architecture
 ![CI/CD Architecture](architecture/cicd-architecture.png)
 
----
-
 ## ✨ Features
+
 - Containerized web application using Docker
 - Amazon ECS Fargate deployment
 - Automated CI/CD using CodePipeline & CodeBuild
@@ -36,9 +37,8 @@ The infrastructure is secured using AWS WAF, HTTPS with AWS Certificate Manager,
 - SNS email notifications
 - Highly available architecture across two Availability Zones
 
----
+## 🛠 Tech Stack
 
-# 🛠 Tech Stack
 | Category | Technologies |
 |-----------|--------------|
 | Cloud | AWS |
@@ -52,9 +52,7 @@ The infrastructure is secured using AWS WAF, HTTPS with AWS Certificate Manager,
 | Languages | HTML, CSS, JavaScript |
 | Operating System | Amazon Linux 2023 |
 
----
-
-# 📂 Repository Structure
+## 📂 Repository Structure
 
 ```text
 aws-ecs-cicd-pipeline/
@@ -85,8 +83,10 @@ aws-ecs-cicd-pipeline/
 
 ---
 
-# 🚀 Deployment
-## Phase 1 – Manual Deployment
+## 🚀 Deployment
+
+### Phase 1 – Manual Deployment
+
 - Launched Amazon Linux 2023 EC2 Build Server
 - Installed Docker, Git and AWS CLI
 - Cloned the application from GitHub
@@ -104,6 +104,7 @@ aws-ecs-cicd-pipeline/
 - Verified successful deployment through the Application Load Balancer using HTTPS.
 
 ### Screenshots
+
 | EC2 | ECR |
 |------|-----|
 | ![](screenshots/manual-deployment/ec2.png) | ![](screenshots/manual-deployment/ecr.png) |
@@ -118,10 +119,11 @@ aws-ecs-cicd-pipeline/
 
 ---
 
-# ⚙️ Phase 2 – CI/CD Automation
+### ⚙️ Phase 2 – CI/CD Automation
+
 The manual deployment process was automated using AWS CodePipeline and AWS CodeBuild, enabling continuous delivery from GitHub to Amazon ECS.
-Workflow:
-GitHub → CodePipeline → CodeBuild → Amazon ECR → Amazon ECS
+Workflow: GitHub → CodePipeline → CodeBuild → Amazon ECR → Amazon ECS
+
 ### Pipeline Process
 - Source code pushed to GitHub
 - CodePipeline automatically triggered
@@ -131,6 +133,7 @@ GitHub → CodePipeline → CodeBuild → Amazon ECR → Amazon ECS
 - Rolling deployment completed successfully
 
 ### Screenshots
+
 | CodeBuild | CodePipeline |
 |-----------|--------------|
 | ![](screenshots/cicd/codebuild.png) | ![](screenshots/cicd/codepipeline.png) |
@@ -139,7 +142,10 @@ GitHub → CodePipeline → CodeBuild → Amazon ECR → Amazon ECS
 |------------------|-----------------|
 | ![](screenshots/cicd/ecr-new-image.png) | ![](screenshots/cicd/website-update.png) |
 
-# 📊 Monitoring & Scaling
+---
+
+## 📊 Monitoring & Scaling
+
 Monitoring and scaling components:
 - CloudWatch Dashboard
 - CloudWatch Logs
@@ -163,9 +169,11 @@ Observed behavior:
 |------------------|------------------|
 | ![](screenshots/monitoring/scaling-activity.png) | ![](screenshots/monitoring/alarm.png) |
 
-# 🔒 Security
+## 🔒 Security
 The application is secured using multiple AWS security services, encrypted HTTPS communication, and network isolation best practices.
+
 ### Security Implementations
+
 - IAM Roles with least-privilege permissions
 - Security Groups for EC2, ALB, and ECS tasks
 - AWS Certificate Manager (ACM) for HTTPS
@@ -183,7 +191,7 @@ The application is secured using multiple AWS security services, encrypted HTTPS
 |-----------|-----------------|
 | ![](screenshots/security/iam-role.png) | ![](screenshots/security/security-groups.png) |
 
-# 🎯 Key Learnings
+## 🎯 Key Learnings
 Throughout this project, I gained hands-on experience with:
 - Docker containerization
 - Amazon ECR image management
@@ -198,7 +206,7 @@ Throughout this project, I gained hands-on experience with:
 - AWS WAF for web application protection
 - Designing a highly available architecture across multiple Availability Zones
 
-# 🚀 Future Enhancements
+## 🚀 Future Enhancements
 - Move the EC2 Build Server to a private subnet and manage it securely using AWS Systems Manager (SSM).
 - Replace NAT Gateway internet access with VPC Endpoints to improve security and reduce infrastructure costs.
 - Provision the complete infrastructure using Terraform (Infrastructure as Code).
