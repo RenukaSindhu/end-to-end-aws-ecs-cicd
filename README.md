@@ -1,4 +1,4 @@
-# 🚀 End-to-End AWS ECS Fargate CI/CD Pipeline with Docker, CodePipeline & CodeBuild
+# 🚀 End-to-End AWS ECS Fargate CI/CD Pipeline using Docker, CodePipeline & CodeBuild
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
 ![Docker](https://img.shields.io/badge/Docker-Container-blue?logo=docker)
 ![Amazon ECS](https://img.shields.io/badge/Amazon-ECS-orange?logo=amazonecs)
@@ -9,17 +9,17 @@
 ![WAF](https://img.shields.io/badge/AWS-WAF-green)
 
 ## 📌 Project Overview
-This project demonstrates an end-to-end production-style deployment of a containerized web application on AWS.
-The application is first deployed manually using Docker, Amazon ECR and Amazon ECS Fargate to understand the complete deployment workflow.
-The deployment process is then fully automated using AWS CodePipeline and AWS CodeBuild, enabling Continuous Integration and Continuous Deployment (CI/CD).
+This project demonstrates an end-to-end production-style deployment of a containerized web application on AWS. \
+The application is first deployed manually using Docker, Amazon ECR and Amazon ECS Fargate to understand the complete deployment workflow. \
+The deployment process is then fully automated using AWS CodePipeline and AWS CodeBuild, enabling Continuous Integration and Continuous Deployment (CI/CD). \
 The infrastructure is secured using AWS WAF, HTTPS with AWS Certificate Manager, custom domain routing using Amazon Route 53, monitored using Amazon CloudWatch, configured with Amazon SNS notifications, and automatically scales using ECS Service Auto Scaling.
 
 ---
 
-# 🏗 Architecture
-## Complete Solution Architecture
+## 🏗 Architecture
+### Complete Solution Architecture
 ![Complete Architecture](architecture/complete-architecture.png)
-## CI/CD Architecture
+### CI/CD Architecture
 ![CI/CD Architecture](architecture/cicd-architecture.png)
 
 ---
