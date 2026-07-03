@@ -1,4 +1,4 @@
-# 🚀 AWS ECS CI/CD Pipeline using Docker, Amazon ECS Fargate & AWS DevOps
+# 🚀 End-to-End AWS ECS Fargate CI/CD Pipeline with Docker, CodePipeline & CodeBuild
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
 ![Docker](https://img.shields.io/badge/Docker-Container-blue?logo=docker)
 ![Amazon ECS](https://img.shields.io/badge/Amazon-ECS-orange?logo=amazonecs)
@@ -17,40 +17,24 @@ The infrastructure is secured using AWS WAF, HTTPS with AWS Certificate Manager,
 ---
 
 # 🏗 Architecture
-
 ## Complete Solution Architecture
+![Complete Architecture](architecture/complete-architecture.png)
+## CI/CD Architecture
+![CI/CD Architecture](architecture/cicd-architecture.png)
 
-> *(Insert your final architecture diagram here)*
-
-```text
-architecture/complete-architecture.png
-```
-
-## CI/CD Pipeline Architecture
-
-> *(Insert CI/CD architecture here)*
-
-```text
-architecture/cicd-architecture.png
-```
 ---
 
 ## ✨ Features
-- Docker Containerization
-- Amazon ECS Fargate Deployment
-- Amazon Elastic Container Registry (ECR)
-- AWS CodeBuild
-- AWS CodePipeline
-- Application Load Balancer
-- Route 53 Custom Domain
-- HTTPS using AWS Certificate Manager
-- AWS WAF Protection
-- CloudWatch Dashboard
-- CloudWatch Logs
-- CloudWatch Alarms
-- Amazon SNS Email Notifications
+- Containerized web application using Docker
+- Amazon ECS Fargate deployment
+- Automated CI/CD using CodePipeline & CodeBuild
+- Private Docker image registry with Amazon ECR
+- HTTPS using ACM & Route 53
+- AWS WAF web protection
 - ECS Service Auto Scaling
-- High Availability across Multiple Availability Zones
+- CloudWatch dashboards, logs, alarms and monitoring
+- SNS email notifications
+- Highly available architecture across two Availability Zones
 
 ---
 
@@ -68,28 +52,6 @@ architecture/cicd-architecture.png
 | Languages | HTML, CSS, JavaScript |
 | Operating System | Amazon Linux 2023 |
 
-# ☁️ AWS Services Used
-
-| AWS Service | Purpose |
-|--------------|---------|
-| Amazon EC2 | Manual Docker build server |
-| Amazon ECS | Container orchestration service |
-| AWS Fargate | Serverless compute engine for containers |
-| Amazon ECR | Private Docker image registry |
-| AWS CodeBuild | Builds Docker images automatically |
-| AWS CodePipeline | Automates CI/CD deployments |
-| Application Load Balancer | Distributes incoming traffic across ECS tasks |
-| Amazon Route 53 | Custom domain name routing |
-| AWS Certificate Manager (ACM) | SSL/TLS certificate for HTTPS |
-| AWS WAF | Protects the application from common web attacks |
-| Amazon CloudWatch | Monitoring, dashboards, logs, and alarms |
-| Amazon SNS | Email notifications from CloudWatch alarms |
-| IAM | Access management and service permissions |
-| Amazon VPC | Network isolation |
-| NAT Gateway | Internet access for private subnets |
-| Internet Gateway | Public internet connectivity |
-| Security Groups | Firewall rules for AWS resources |
-
 ---
 
 # 📂 Repository Structure
@@ -98,9 +60,7 @@ architecture/cicd-architecture.png
 aws-ecs-cicd-pipeline/
 │
 ├── architecture/
-│   ├── complete-architecture.png
-│   ├── deployment-architecture.png
-│   └── cicd-architecture.png
+│   └── complete-architecture.png
 │
 ├── screenshots/
 │   ├── manual-deployment/
@@ -116,209 +76,133 @@ aws-ecs-cicd-pipeline/
 ├── Dockerfile
 ├── buildspec.yml
 ├── README.md
-│
 ├── index.html
 ├── about.html
-├── contact.html
 ├── service.html
+├── contact.html
 └── guard.html
 ```
 
 ---
 
-# 🌐 Infrastructure Overview
-The infrastructure is deployed inside a custom Amazon VPC across two Availability Zones for high availability.
+# 🚀 Deployment
+## Phase 1 – Manual Deployment
+- Launched Amazon Linux 2023 EC2 Build Server
+- Installed Docker, Git and AWS CLI
+- Cloned the application from GitHub
+- Built the Docker image
+- Created Amazon ECR repository
+- Pushed Docker image to Amazon ECR
+- Created Amazon ECS Cluster (Fargate)
+- Created Task Definition
+- Configured Application Load Balancer
+- Created ECS Service
+- Configured ECS Auto Scaling
+- Configured Route53 custom domain
+- Enabled HTTPS using AWS Certificate Manager
+- Protected the application using AWS WAF
+- Verified successful deployment through the Application Load Balancer using HTTPS.
 
-### Public Subnets
-- Application Load Balancer
-- NAT Gateway
-- EC2 Build Server (Manual Deployment)
-
-### Private Subnets
-- Amazon ECS Fargate Tasks
-
-### Networking Components
-- Internet Gateway
-- Route Tables
-- Elastic IPs
-- Security Groups
-
----
-
-# 🔄 Deployment Workflow
-## Manual Deployment
-```text
-GitHub Repository
-        │
-        ▼
-EC2 Build Server
-        │
-Docker Build
-        │
-        ▼
-Amazon ECR
-        │
-        ▼
-Amazon ECS Task Definition
-        │
-        ▼
-Amazon ECS Service
-        │
-        ▼
-Application Load Balancer
-        │
-        ▼
-Users
-```
-
----
-
-## Automated CI/CD Workflow
-```text
-Developer
-    │
-Git Push
-    │
-    ▼
-GitHub Repository
-    │
-    ▼
-AWS CodePipeline
-    │
-    ▼
-AWS CodeBuild
-    │
-Docker Build
-    │
-Push Image
-    ▼
-Amazon ECR
-    │
-    ▼
-Amazon ECS Service
-    │
-Rolling Deployment
-    ▼
-Application Load Balancer
-    │
-HTTPS
-    ▼
-Users
-```
-
-# 🚀 Phase 1 – Manual Deployment
-The application was manually deployed to Amazon ECS Fargate to understand the complete deployment workflow before implementing CI/CD automation.
-
----
-
-## Step 1 – Launch Amazon EC2 Build Server
-- Launched an Amazon Linux 2023 EC2 instance.
-- Configured an IAM Role with Amazon ECR permissions.
-- Installed Docker, Git, and AWS CLI.
-
-### Screenshot
-![EC2 Instance](screenshots/manual-deployment/ec2-instance.png)
-
----
-
-## Step 2 – Clone Application Source Code
-The application source code was cloned from the GitHub repository to the EC2 build server.
-```bash
-git clone https://github.com/<your-username>/aws-ecs-cicd-pipeline.git
-```
-
----
-
-## Step 3 – Build Docker Image
-The application was containerized using Docker.
-```bash
-docker build -t web-ecs-app .
-```
-### Screenshot
-![Docker Build](screenshots/manual-deployment/docker-build.png)
-
----
-
-## Step 4 – Create Amazon ECR Repository
-A private Amazon Elastic Container Registry (ECR) repository was created to store Docker images.
-### Screenshot
-![Amazon ECR](screenshots/manual-deployment/ecr-repository.png)
-
----
-
-## Step 5 – Push Docker Image to Amazon ECR
-The Docker image was tagged and pushed to Amazon ECR.
-```bash
-docker tag web-ecs-app:latest <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/web-ecs-repository:latest
-docker push <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/web-ecs-repository:latest
-```
-### Screenshot
-![Docker Push](screenshots/manual-deployment/ecr-image.png)
-
----
-
-## Step 6 – Create Amazon ECS Cluster
-An Amazon ECS Cluster using the AWS Fargate launch type was created.
-### Screenshot
-![ECS Cluster](screenshots/manual-deployment/ecs-cluster.png)
-
----
-
-## Step 7 – Create Task Definition
-Configured an ECS Task Definition using:
-- AWS Fargate
-- Amazon ECR Image
-- CloudWatch Logs
-- 0.25 vCPU
-- 0.5 GB Memory
-### Screenshot
-![Task Definition](screenshots/manual-deployment/task-definition.png)
-
----
-
-## Step 8 – Configure Application Load Balancer
-Created:
-- Target Group
-- Internet-facing Application Load Balancer
-- Listener
-- Health Checks
-### Screenshot
-![Application Load Balancer](screenshots/manual-deployment/alb.png)
-
----
-
-## Step 9 – Deploy ECS Service
-Created the ECS Service using:
-- ECS Cluster
-- Task Definition
-- Application Load Balancer
-- Target Group
-Configured Service Auto Scaling for automatic scaling based on application traffic.
-### Screenshot
-![ECS Service](screenshots/manual-deployment/ecs-service.png)
-
----
-
-## Step 10 – Configure Route 53 & HTTPS
-Configured:
-- Route 53 Hosted Zone
-- Custom Domain
-- AWS Certificate Manager
-- HTTPS Listener
 ### Screenshots
-![Route53](screenshots/security/route53.png)
-![ACM](screenshots/security/acm.png)
+| EC2 | ECR |
+|------|-----|
+| ![](screenshots/manual-deployment/ec2.png) | ![](screenshots/manual-deployment/ecr.png) |
+
+| ECS Cluster | ECS Service |
+|-------------|-------------|
+| ![](screenshots/manual-deployment/ecs-cluster.png) | ![](screenshots/manual-deployment/ecs-service.png) |
+
+| ALB | Website |
+|-----|---------|
+| ![](screenshots/manual-deployment/alb.png) | ![](screenshots/manual-deployment/website.png) |
 
 ---
 
-## Step 11 – Protect Application using AWS WAF
-Attached an AWS WAF Web ACL to the Application Load Balancer to protect the application against common web exploits.
-### Screenshot
-![AWS WAF](screenshots/security/waf.png)
+# ⚙️ Phase 2 – CI/CD Automation
+The manual deployment process was automated using AWS CodePipeline and AWS CodeBuild, enabling continuous delivery from GitHub to Amazon ECS.
+Workflow:
+GitHub → CodePipeline → CodeBuild → Amazon ECR → Amazon ECS
+### Pipeline Process
+- Source code pushed to GitHub
+- CodePipeline automatically triggered
+- CodeBuild built the Docker image
+- Docker image pushed to Amazon ECR
+- ECS Service automatically updated
+- Rolling deployment completed successfully
 
----
+### Screenshots
+| CodeBuild | CodePipeline |
+|-----------|--------------|
+| ![](screenshots/cicd/codebuild.png) | ![](screenshots/cicd/codepipeline.png) |
 
-## Step 12 – Verify Application
-The application was successfully deployed and accessed through the Application Load Balancer using HTTPS.
-### Screenshot
-![Running Website](screenshots/manual-deployment/website.png)
+| Updated ECR Image | Updated Website |
+|------------------|-----------------|
+| ![](screenshots/cicd/ecr-new-image.png) | ![](screenshots/cicd/website-update.png) |
+
+# 📊 Monitoring & Scaling
+Monitoring and scaling components:
+- CloudWatch Dashboard
+- CloudWatch Logs
+- CloudWatch Alarms
+- Amazon SNS Notifications
+- ECS Service Auto Scaling
+
+### Auto Scaling Test
+Apache Benchmark (ab) was used to generate traffic.
+Observed behavior:
+- ECS Service scaled out from **2** tasks to **4** tasks under heavy load.
+- After traffic subsided, the service automatically scaled back to **2** tasks.
+
+### Screenshots
+
+| Dashboard | Auto Scaling |
+|-----------|--------------|
+| ![](screenshots/monitoring/dashboard.png) | ![](screenshots/monitoring/autoscaling.png) |
+
+| Scaling Activity | CloudWatch Alarm |
+|------------------|------------------|
+| ![](screenshots/monitoring/scaling-activity.png) | ![](screenshots/monitoring/alarm.png) |
+
+# 🔒 Security
+The application is secured using multiple AWS security services, encrypted HTTPS communication, and network isolation best practices.
+### Security Implementations
+- IAM Roles with least-privilege permissions
+- Security Groups for EC2, ALB, and ECS tasks
+- AWS Certificate Manager (ACM) for HTTPS
+- Amazon Route 53 for custom domain routing
+- AWS WAF Web ACL attached to the Application Load Balancer
+- Private subnets for ECS Fargate tasks
+- NAT Gateway for outbound internet access from private subnets
+
+### Screenshots
+| AWS WAF | HTTPS (ACM + Route 53) |
+|----------|------------------------|
+| ![](screenshots/security/waf.png) | ![](screenshots/security/https.png) |
+
+| IAM Role | Security Groups |
+|-----------|-----------------|
+| ![](screenshots/security/iam-role.png) | ![](screenshots/security/security-groups.png) |
+
+# 🎯 Key Learnings
+Throughout this project, I gained hands-on experience with:
+- Docker containerization
+- Amazon ECR image management
+- Amazon ECS Fargate deployments
+- Application Load Balancer configuration
+- ECS Service Auto Scaling
+- CI/CD automation using AWS CodeBuild and CodePipeline
+- CloudWatch dashboards, logs, and alarms
+- Amazon SNS notifications
+- Route 53 DNS management
+- HTTPS configuration using AWS Certificate Manager
+- AWS WAF for web application protection
+- Designing a highly available architecture across multiple Availability Zones
+
+# 🚀 Future Enhancements
+- Move the EC2 Build Server to a private subnet and manage it securely using AWS Systems Manager (SSM).
+- Replace NAT Gateway internet access with VPC Endpoints to improve security and reduce infrastructure costs.
+- Provision the complete infrastructure using Terraform (Infrastructure as Code).
+- Implement Blue/Green deployments for zero-downtime releases.
+- Store sensitive configuration and secrets using AWS Secrets Manager.
+- Integrate GitHub Actions as an alternative CI/CD pipeline.
+- Configure centralized log analysis and advanced monitoring using Prometheus and Grafana.
