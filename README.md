@@ -1,91 +1,77 @@
-# AWS ECS CI/CD Pipeline
-## Project Overview
-This project demonstrates both manual deployment and automated CI/CD deployment of a containerized web application on AWS. \
-The application is containerized using Docker, stored in Amazon ECR, and deployed to Amazon ECS Fargate. The deployment process is first performed manually to understand the complete workflow and then automated using AWS CodeBuild and AWS CodePipeline integrated with GitHub.
+# 🚀 AWS ECS CI/CD Pipeline using Docker, Amazon ECS Fargate & AWS DevOps
 
-## Architecture
-### Deployment Architecture
-![Deployment Architecture](architecture/deployment_architecture.png)
-### CI/CD Architecture
-![CI/CD Architecture](architecture/cicd_architecture.png)
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
+![Docker](https://img.shields.io/badge/Docker-Container-blue?logo=docker)
+![Amazon ECS](https://img.shields.io/badge/Amazon-ECS-orange?logo=amazonecs)
+![Amazon ECR](https://img.shields.io/badge/Amazon-ECR-orange)
+![CodePipeline](https://img.shields.io/badge/AWS-CodePipeline-blue)
+![CodeBuild](https://img.shields.io/badge/AWS-CodeBuild-yellow)
+![CloudWatch](https://img.shields.io/badge/AWS-CloudWatch-red)
+![WAF](https://img.shields.io/badge/AWS-WAF-green)
 
-### Manual Deployment Workflow
-GitHub Repository → EC2 Instance → Docker Build → Amazon ECR → ECS Cluster → Task Definition → ECS Service → Application Load Balancer → Users
-### Automated CI/CD Workflow
-GitHub → AWS CodePipeline → AWS CodeBuild → Amazon ECR → Amazon ECS Fargate → Application Load Balancer → Users
+## 📌 Project Overview
 
-## AWS Services Used
-•	Amazon EC2 \
-•	Amazon ECR (Elastic Container Registry) \
-•	Amazon ECS (Elastic Container Service) \
-•	AWS Fargate \
-•	AWS CodeBuild \
-•	AWS CodePipeline \
-•	Application Load Balancer (ALB) \
-•	Auto Scaling \
-•	AWS IAM \
-•	Amazon CloudWatch 
+This project demonstrates an end-to-end production-style deployment of a containerized web application on AWS.
 
-## Technologies Used
-•	Docker \
-•	Git \
-•	GitHub \
-•	HTML \
-•	CSS \
-•	JavaScript \
-•	AWS CLI \
-•	Linux (Amazon Linux 2023)
+The application is first deployed manually using Docker, Amazon ECR and Amazon ECS Fargate to understand the complete deployment workflow.
 
-## Phase 1: Manual Deployment
-### Steps Performed
-1.	Launched Amazon Linux EC2 instance.
-2.	Installed Git and Docker.
-3.	Cloned source code from GitHub.
-4.	Created Docker image using Dockerfile.
-5.	Created Amazon ECR repository.
-6.	Tagged and pushed Docker image to ECR.
-7.	Created ECS Cluster using AWS Fargate.
-8.	Created Task Definition.
-9.	Created ECS Service.
-10.	Configured Application Load Balancer.
-11.	Enabled Auto Scaling.
-12.	Successfully deployed and accessed the application.
+The deployment process is then fully automated using AWS CodePipeline and AWS CodeBuild, enabling Continuous Integration and Continuous Deployment (CI/CD).
 
-### Amazon ECR Repository
-![ecr-repository](screenshots/manual-deployment/ecr-repository.png)
-### Amazon ECS Cluster
-![ecs-cluster](screenshots/manual-deployment/ecs-cluster.png)
-### Amazon ECS Service
-![ecs-service](screenshots/manual-deployment/ecs-service.png)
-### Running Application
-![website-output](screenshots/manual-deployment/website-output.png)
+The infrastructure is secured using AWS WAF, HTTPS with AWS Certificate Manager, custom domain routing using Amazon Route 53, monitored using Amazon CloudWatch, configured with Amazon SNS notifications, and automatically scales using ECS Service Auto Scaling.
 
-## Phase 2: Automated CI/CD Pipeline
-### CI/CD Workflow
-1.	Developer pushes code to GitHub.
-2.	AWS CodePipeline detects source code changes.
-3.	AWS CodeBuild builds Docker image automatically.
-4.	Image is pushed to Amazon ECR.
-5.	ECS Service is updated automatically.
-6.	New tasks are deployed without manual intervention.
+---
 
-### AWS CodeBuild Success
-![codebuild-success](screenshots/cicd/codebuild-success.png)
-### AWS CodePipeline Success
-![codepipeline-success](screenshots/cicd/codepipeline-success.png)
-### Updated Application After Git Push
-![updated-website](screenshots/cicd/updated-website.png)
+## ✨ Features
 
-## Key Learnings
-•	Docker containerization \
-•	Container image management using Amazon ECR \
-•	ECS Fargate deployment \
-•	Task Definitions and Services \
-•	Load Balancer configuration \
-•	Auto Scaling \
-•	CI/CD automation using CodeBuild and CodePipeline \
-•	GitHub integration with AWS services \
-•	Infrastructure deployment workflow 
+- Docker Containerization
+- Amazon ECS Fargate Deployment
+- Amazon Elastic Container Registry (ECR)
+- AWS CodeBuild
+- AWS CodePipeline
+- Application Load Balancer
+- Route 53 Custom Domain
+- HTTPS using AWS Certificate Manager
+- AWS WAF Protection
+- CloudWatch Dashboard
+- CloudWatch Logs
+- CloudWatch Alarms
+- Amazon SNS Email Notifications
+- ECS Service Auto Scaling
+- High Availability across Multiple Availability Zones
 
-## Future Enhancements
-• In production, this EC2 build server would typically be private and accessed through SSM.
+---
+
+# 🏗 Architecture
+
+## Complete Solution Architecture
+
+> *(Insert your final architecture diagram here)*
+
+```text
+architecture/complete-architecture.png
+```
+
+## CI/CD Pipeline Architecture
+
+> *(Insert CI/CD architecture here)*
+
+```text
+architecture/cicd-architecture.png
+```
+
+---
+
+# 🛠 Tech Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Cloud | AWS |
+| Compute | Amazon ECS Fargate, Amazon EC2 |
+| Containerization | Docker |
+| Registry | Amazon ECR |
+| CI/CD | AWS CodePipeline, AWS CodeBuild |
+| Networking | VPC, ALB, Route53, NAT Gateway |
+| Security | IAM, ACM, WAF, Security Groups |
+| Monitoring | CloudWatch, SNS |
+| Languages | HTML, CSS, JavaScript |
+| Operating System | Amazon Linux 2023 |
