@@ -57,10 +57,11 @@ aws-ecs-cicd-pipeline/
 │   └── complete-architecture.png
 │
 ├── screenshots/
-│   ├── manual-deployment/
-│   ├── cicd/
-│   ├── monitoring/
-│   └── security/
+│   ├── 01-networking/
+│   ├── 02-manual-deployment/
+│   ├── 03-security/
+│   ├── 04-monitoring/
+│   └── 05-cicd/
 │
 ├── css/
 ├── js/
@@ -103,15 +104,15 @@ aws-ecs-cicd-pipeline/
 
 | EC2 | ECR |
 |------|-----|
-| ![](screenshots/manual-deployment/ec2.png) | ![](screenshots/manual-deployment/ecr.png) |
+| ![ec2-running](screenshots/02-manual-deployment/ec2-running.png) | ![ecr-repository-and-images](screenshots/02-manual-deployment/ecr-repository-and-images.png) |
 
 | ECS Cluster | ECS Service |
 |-------------|-------------|
-| ![](screenshots/manual-deployment/ecs-cluster.png) | ![](screenshots/manual-deployment/ecs-service.png) |
+| ![cs-cluster-manual](screenshots/02-manual-deployment/ecs-cluster-manual.png) | ![ecs-service-manual](screenshots/02-manual-deployment/ecs-service-manual.png) |
 
 | ALB | Website |
 |-----|---------|
-| ![](screenshots/manual-deployment/alb.png) | ![](screenshots/manual-deployment/website.png) |
+| ![alb-ecs](screenshots/01-networking/alb-ecs.png) | ![http-website-view](screenshots/02-manual-deployment/http-website-view.png) |
 
 ---
 
@@ -132,11 +133,11 @@ Workflow: GitHub → CodePipeline → CodeBuild → Amazon ECR → Amazon ECS
 
 | CodeBuild | CodePipeline |
 |-----------|--------------|
-| ![](screenshots/cicd/codebuild.png) | ![](screenshots/cicd/codepipeline.png) |
+| ![codebuild-project](screenshots/05-cicd/codebuild-project.png) | ![codepipeline-after-new-change](screenshots/05-cicd/2nd-codepipeline-after-new-change.png) |
 
-| Updated ECR Image | Updated Website |
-|------------------|-----------------|
-| ![](screenshots/cicd/ecr-new-image.png) | ![](screenshots/cicd/website-update.png) |
+| Updated ECS Task Definition | Updated Website |
+|----------------------------|-----------------|
+| ![task-defination-after-pipeline](screenshots/05-cicd/task-defination-after-pipeline.png) | ![successful-update-website-view](screenshots/05-cicd/codepipeline-successful-update-website-view.png) |
 
 ---
 
@@ -157,13 +158,13 @@ Observed behavior:
 
 ### Screenshots
 
-| Dashboard | Auto Scaling |
-|-----------|--------------|
-| ![](screenshots/monitoring/dashboard.png) | ![](screenshots/monitoring/autoscaling.png) |
+| CloudWatch Dashboard | ECS Auto Scaling |
+|----------------------|------------------|
+| ![cloudwatch-dashboard](screenshots/04-monitoring/cloudwatch-dashboard.png) | ![ecs-autoscaling](screenshots/04-monitoring/ecs-autoscaling.png) |
 
-| Scaling Activity | CloudWatch Alarm |
-|------------------|------------------|
-| ![](screenshots/monitoring/scaling-activity.png) | ![](screenshots/monitoring/alarm.png) |
+| Scaling Activities | Max Scaled-Out Tasks |
+|--------------------|----------------------|
+| ![ecs-scaling-activities](screenshots/04-monitoring/ecs-scaling-activities.png) | ![max-scaled-out-tasks](screenshots/04-monitoring/max-scaled-out-tasks.png) |
 
 ## 🔒 Security
 The application is secured using multiple AWS security services, encrypted HTTPS communication, and network isolation best practices.
@@ -179,13 +180,14 @@ The application is secured using multiple AWS security services, encrypted HTTPS
 - NAT Gateway for outbound internet access from private subnets
 
 ### Screenshots
+
 | AWS WAF | HTTPS (ACM + Route 53) |
 |----------|------------------------|
-| ![](screenshots/security/waf.png) | ![](screenshots/security/https.png) |
+| ![waf-alb-rules](screenshots/03-security/waf-alb-rules.png) | ![https-website-view](screenshots/03-security/https-website-view.png) |
 
-| IAM Role | Security Groups |
-|-----------|-----------------|
-| ![](screenshots/security/iam-role.png) | ![](screenshots/security/security-groups.png) |
+| AWS Certificate Manager | Route 53 DNS Records |
+|--------------------------|----------------------|
+| ![aws-certificate-manager](screenshots/03-security/aws-certificate-manager.png) | ![domain-records](screenshots/03-security/domain-records.png) |
 
 ## 🎯 Key Learnings
 Throughout this project, I gained hands-on experience with:
