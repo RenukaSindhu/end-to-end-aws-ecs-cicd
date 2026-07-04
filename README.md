@@ -135,7 +135,7 @@ Workflow: GitHub → CodePipeline → CodeBuild → Amazon ECR → Amazon ECS
 |-----------|--------------|
 | ![codebuild-project](screenshots/05-cicd/codebuild-project.png) | ![codepipeline-after-new-change](screenshots/05-cicd/2nd-codepipeline-after-new-change.png) |
 
-| Updated ECS Task Definition | Updated Website |
+| Updated ECS Task Definition | Https + Updated Website |
 |----------------------------|-----------------|
 | ![task-defination-after-pipeline](screenshots/05-cicd/task-defination-after-pipeline.png) | ![successful-update-website-view](screenshots/05-cicd/codepipeline-successful-update-website-view.png) |
 
