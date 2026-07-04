@@ -18,10 +18,6 @@ The infrastructure is secured using AWS WAF, HTTPS with AWS Certificate Manager,
 
 ## 🏗 Architecture
 
-### Complete Solution Architecture
-![Complete Architecture](architecture/complete-architecture.png)
-
-### CI/CD Architecture
 ![CI/CD Architecture](architecture/cicd-architecture.png)
 
 ## ✨ Features
